@@ -7,7 +7,6 @@ const Search = () => {
     const handleSearch = (e) => {
         e.preventDefault();
         albumId === '' ?  window.alert("Id can't be empty") : search()
-        
     }
     const search = () => {
         setLoading(true)
@@ -15,8 +14,9 @@ const Search = () => {
         fetch(`https://jsonplaceholder.typicode.com/albums/${albumId}/photos`)
         .then(response => response.json())
         .then(data => {
-            if(!data){
-                console.log("No albums found!")
+            if(data.length === 0){
+                window.alert("No albums found! Try another Id")
+                setLoading(false)
             }else {
                 setAlbums(data)
                 setLoading(false)
@@ -37,7 +37,6 @@ const Search = () => {
                     setAlbumId('')
                 }}>Reset</button></center>}
                 <div>
-                    {loading && <h4 style={{textAlign: 'center', color: 'rgb(15, 63, 126)'}}>Getting albums ... Please wait...</h4>}
                     {albums && <div className="gallery-list">
                         {albums.map((album) => (
                             <div className="gallery-item" key={album.id}>
@@ -46,7 +45,7 @@ const Search = () => {
                             </div>
                         ))}
                     </div>}
-                    {!albums || !loading && <h4 style={{textAlign: 'center', color: 'rgb(15, 63, 126)'}}>No albums, enter a valid Id to get a list of Albums.</h4>}
+                    {!albums && <h4 style={{textAlign: 'center', color: 'rgb(15, 63, 126)', display: loading ? "hide" : "block"}}>{!loading  ? "No albums, enter a valid Id to get a list of Albums.": "Getting albums ... Please wait..."}</h4>}
                 </div>
             </div>
             <div></div>
