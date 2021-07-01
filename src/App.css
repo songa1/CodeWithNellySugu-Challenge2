@@ -1,38 +1,83 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background-color: rgb(233, 227, 227);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
+}
+
+@media (max-width: 1100px) {
+  .container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 15% 70% 15%;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@media (max-width: 800px) {
+  .container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 5% 90% 5%;
+  }
+}
+
+.search-bar {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction:row;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+}
+.search-bar input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid rgb(180, 175, 175);
+}
+
+.search-bar button {
+  padding: 10px;
+  width: 100%;
+  margin: 10px;
+  background-color: rgb(14, 56, 110);
   color: white;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+}
+.search-bar button:hover {
+  background-color: rgb(15, 63, 126);
 }
 
-.App-link {
-  color: #61dafb;
+.search-bar button:active {
+  background-color: rgb(15, 63, 126);
+  border: 3px solid rgb(51, 117, 202);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.gallery-list {
+  display: grid;
+  grid-template-columns: 100%;
+  justify-content: start;
+}
+
+.gallery-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.gallery-item img {
+  width: 50px;
+  height: 50px;
+  margin: 10px;
+  border-radius:50px;
 }
